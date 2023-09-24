@@ -15,8 +15,6 @@ public class PeopleService : IPeopleService
     public IEnumerable<People> GetAllPeoples()
     {
         return _peopleRepository.GetAllPeoples();
-        // Aqui, eventualmente, você pode fazer outras operações ou transformações
-        // Por exemplo, converter entidades para DTOs, etc.
     }
 
     public People GetPeopleById(int id)
