@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CrudQualidade.Application.DTOs
+﻿namespace CrudQualidade.Application.DTOs
 {
     public class PeopleDTO
     {

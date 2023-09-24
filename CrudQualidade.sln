@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudQualidade.Domain", "CrudQualidade.Domain\CrudQualidade.Domain.csproj", "{9B4895AA-4D6E-4436-8573-22FA5B359FA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudQualidade.Domain", "CrudQualidade.Domain\CrudQualidade.Domain.csproj", "{9B4895AA-4D6E-4436-8573-22FA5B359FA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudQualidade.Infrastructure", "CrudQualidade.Infrastructure\CrudQualidade.Infrastructure.csproj", "{5AFF28A5-D929-4C25-9959-6B48A2B5D059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudQualidade.Infrastructure", "CrudQualidade.Infrastructure\CrudQualidade.Infrastructure.csproj", "{5AFF28A5-D929-4C25-9959-6B48A2B5D059}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudQualidade.Application", "CrudQualidade.Application\CrudQualidade.Application.csproj", "{E08B85BF-7D03-49EA-B7DF-C8EEAE302AE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudQualidade.Application", "CrudQualidade.Application\CrudQualidade.Application.csproj", "{E08B85BF-7D03-49EA-B7DF-C8EEAE302AE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudQualidade.API", "CrudQualidade.API\CrudQualidade.API.csproj", "{6403AC1B-E19C-40CA-A6DD-271E3E6FE148}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudQualidade.API", "CrudQualidade.API\CrudQualidade.API.csproj", "{6403AC1B-E19C-40CA-A6DD-271E3E6FE148}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
