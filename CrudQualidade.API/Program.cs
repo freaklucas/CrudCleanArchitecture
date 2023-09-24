@@ -2,7 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using CrudQualidade.Infrastructure.Data.Configuration;
 using CrudQualidade.Infrastructure.Data;
 using CrudQualidade.Application.Interfaces;
-
+using CrudQualidade.Domain.Interfaces;
+using CrudQualidade.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.ConfigureServices(builder.Configuration);
-builder.Services.AddScoped<IPeopleService, IPeopleService>();
+builder.Services.AddScoped<IPeopleService, PeopleService>();
+builder.Services.AddScoped<IPeopleRepository, PeopleRepository>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));

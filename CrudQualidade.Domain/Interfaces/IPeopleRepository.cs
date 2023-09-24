@@ -1,8 +1,13 @@
 ﻿using CrudQualidade.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CrudQualidade.Application.Interfaces
+namespace CrudQualidade.Domain.Interfaces
 {
-    public interface IPeopleService
+    public interface IPeopleRepository
     {
         IEnumerable<People> GetAllPeoples();
         // TODO: Outros métodos, como GetById, Add, Update, Delete, etc.
