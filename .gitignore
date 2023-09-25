@@ -34,6 +34,10 @@ obj/
 # Visual Studio Code
 #####################
 
+CadastrosDatabase.db
+CadastrosDatabase.db-shm
+CadastrosDatabase.db-wal
+
 .vscode/
 
 # Build results
