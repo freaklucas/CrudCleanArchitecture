@@ -1,24 +1,22 @@
 ﻿using CrudQualidade.Application.Interfaces;
 using CrudQualidade.Domain.Entities;
-using CrudQualidade.Domain.Interfaces;
-using System.Collections.Generic;
 
 public class PeopleService : IPeopleService
 {
-    private readonly IPeopleRepository _peopleRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public PeopleService(IPeopleRepository peopleRepository)
+    public PeopleService(IUnitOfWork unitOfWork)
     {
-        _peopleRepository = peopleRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public IEnumerable<People> GetAllPeoples()
     {
-        return _peopleRepository.GetAllPeoples();
+        return _unitOfWork.PeopleRepository.GetAllPeoples();
     }
 
     public People GetPeopleById(int id)
     {
-        return _peopleRepository.GetPeopleById(id);
+        return _unitOfWork.PeopleRepository.GetPeopleById(id);
     }
 }

@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.ConfigureServices(builder.Configuration);
 builder.Services.AddScoped<IPeopleService, PeopleService>();
-builder.Services.AddScoped<IPeopleRepository, PeopleRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));

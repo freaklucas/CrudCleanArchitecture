@@ -26,4 +26,16 @@
 	  <ProjectReference Include="..\CrudQualidade.Domain\CrudQualidade.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Remove="Repositories\Generic\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Remove="Repositories\Generic\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Repositories\Generic\**" />
+	</ItemGroup>
+
 </Project>

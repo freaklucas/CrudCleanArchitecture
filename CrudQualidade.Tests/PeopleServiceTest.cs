@@ -16,9 +16,10 @@ namespace CrudQualidade.Tests
             var mockRepo = new Mock<IPeopleRepository>();
             mockRepo.Setup(repo => repo.GetAllPeoples())
                 .Returns(GetTestPeoples());
+            var mockUow = new Mock<IUnitOfWork>();
+            mockUow.Setup(uow => uow.PeopleRepository).Returns(mockRepo.Object);
             
-            var service = new PeopleService(mockRepo.Object); 
-
+            var service = new PeopleService(mockUow.Object);
             var result = service.GetAllPeoples();
 
             Assert.Collection(result, 
