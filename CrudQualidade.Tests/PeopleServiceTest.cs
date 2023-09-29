@@ -27,6 +27,23 @@ namespace CrudQualidade.Tests
                 people => Assert.Equal("Márcia", people.Name));
         }
 
+        [Fact]
+        public void GetPeoples_ShouldReturnPeopleById()
+        {
+            var expectedPeopleId = 1;
+            var expectedPeople = new People { Id=expectedPeopleId, Name="Lucas" };
+            var mockRepo = new Mock<IPeopleRepository>();
+            mockRepo.Setup(repo => repo.GetPeopleById(expectedPeopleId)).Returns(expectedPeople);
+
+            var mockUow = new Mock<IUnitOfWork>();
+            mockUow.Setup(uow => uow.PeopleRepository).Returns(mockRepo.Object);
+
+            var service = new PeopleService(mockUow.Object);
+            var result = service.GetPeopleById(expectedPeopleId);
+            
+            Assert.Equal(expectedPeople.Name, result.Name);
+        }
+        
         private List<People> GetTestPeoples()
         {
             return new List<People>
