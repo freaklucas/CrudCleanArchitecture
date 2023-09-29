@@ -6,5 +6,7 @@ namespace CrudQualidade.Application.Interfaces
     {
         IEnumerable<People> GetAllPeoples();
         People GetPeopleById(int id);
+
+        void InsertPeople(People people);
     }
 }

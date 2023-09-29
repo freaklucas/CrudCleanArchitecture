@@ -21,6 +21,17 @@ namespace CrudQualidade.API.Controllers
             return Ok(_peopleService.GetAllPeoples());
         }
 
+        [HttpPost]
+        public IActionResult PostPeople(People people)
+        {
+            if (people == null)
+                return BadRequest("Dados inválidos.");
+            
+            _peopleService.InsertPeople(people);
+
+            return CreatedAtAction(nameof(GetPeopleById), new { id = people.Id }, people);
+        }
+
         [HttpGet("{id}")]
         public ActionResult<People> GetPeopleById(int id)
         {
@@ -30,6 +41,5 @@ namespace CrudQualidade.API.Controllers
 
             return Ok(people);
         }
-
     }
 }

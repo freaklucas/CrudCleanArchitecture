@@ -14,9 +14,14 @@ public class PeopleService : IPeopleService
     {
         return _unitOfWork.PeopleRepository.GetAllPeoples();
     }
-
+    
     public People GetPeopleById(int id)
     {
         return _unitOfWork.PeopleRepository.GetPeopleById(id);
+    }
+    
+    public void InsertPeople(People people)
+    {
+        _unitOfWork.PeopleRepository.Insert(people);
     }
 }

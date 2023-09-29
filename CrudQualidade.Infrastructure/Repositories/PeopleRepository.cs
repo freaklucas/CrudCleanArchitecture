@@ -22,5 +22,10 @@ namespace CrudQualidade.Infrastructure.Repository
             return _context.Peoples.FirstOrDefault(p => p.Id == id);
         }
 
+        public void Insert(People people)
+        {
+            _context.Peoples.Add(people);
+            _context.SaveChanges();
+        }
     }
 }
