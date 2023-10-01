@@ -1,4 +1,5 @@
-﻿using CrudQualidade.Application.Interfaces;
+﻿using CrudQualidade.Application.DTOs;
+using CrudQualidade.Application.Interfaces;
 using CrudQualidade.Domain.Entities;
 
 public class PeopleService : IPeopleService
@@ -23,5 +24,20 @@ public class PeopleService : IPeopleService
     public void InsertPeople(People people)
     {
         _unitOfWork.PeopleRepository.Insert(people);
+    }
+
+    public IEnumerable<People> GetPeopleByName(string name)
+    {
+        return _unitOfWork.PeopleRepository.GetPeopleByName(name);
+    }
+
+    public void UpdatePeople(People people)
+    {
+        _unitOfWork.PeopleRepository.UpdatePeople(people);
+    }
+
+    public void DeletePeople(People people)
+    {
+        _unitOfWork.PeopleRepository.DeletePeople(people);
     }
 }

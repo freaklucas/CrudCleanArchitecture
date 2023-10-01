@@ -10,4 +10,8 @@
     <ProjectReference Include="..\CrudQualidade.Domain\CrudQualidade.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="DTOs\PeoplePatchDTO.cs" />
+  </ItemGroup>
+
 </Project>

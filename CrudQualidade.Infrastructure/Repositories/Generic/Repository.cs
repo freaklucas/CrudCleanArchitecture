@@ -36,6 +36,12 @@ public class Repository<T> : IRepository<T> where T : class
 
     public void Update(T entity)
     {
+        if (_context.Entry(entity).State == EntityState.Detached)
+        {
+            _entities.Attach(entity);
+        }
+
+        _context.Entry(entity).State = EntityState.Modified;
         _entities.Update(entity);
     }
 }
