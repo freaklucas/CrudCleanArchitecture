@@ -52,5 +52,17 @@ namespace CrudQualidade.Infrastructure.Repository
             Remove(people);
             _context.SaveChanges();
         }
+
+        public IEnumerable<People> GetPeopleByFilters(string city, int? ageMin, int? ageMax)
+        {
+            var query = _context.Peoples.AsQueryable();
+            if (!string.IsNullOrEmpty(city))
+                query = query.Where(p => p.City.ToLower() == city.ToLower());
+            if (ageMin.HasValue)
+                query = query.Where(p => p.Age >= ageMin.Value);
+            if (ageMax.HasValue)
+                query = query.Where(p => p.Age <= ageMax.Value);
+            return query.ToList();
+        }
     }
 }

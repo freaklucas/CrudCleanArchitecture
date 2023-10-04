@@ -12,5 +12,6 @@ namespace CrudQualidade.Application.Interfaces
         void InsertPeople(People people);
 
         void DeletePeople(People people);
+        IEnumerable<People> GetPeopleByFilters(string city, int? ageMin, int? ageMax);
     }
 }

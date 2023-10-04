@@ -13,5 +13,7 @@ namespace CrudQualidade.Domain.Interfaces
         void UpdatePeople(People people);
 
         void DeletePeople(People people);
+
+        IEnumerable<People> GetPeopleByFilters(string city, int? ageMin, int? ageMax);
     }
 }

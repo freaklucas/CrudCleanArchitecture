@@ -40,6 +40,17 @@ namespace CrudQualidade.API.Controllers
             else
                 return NotFound();
         }
+
+        [HttpGet("filter")]
+        public IActionResult GetPeopleByFilters([FromQuery] string city, [FromQuery] int? ageMin,
+            [FromQuery] int? ageMax)
+        {
+            var result = _peopleService.GetPeopleByFilters(city, ageMin, ageMax);
+            if (result == null || !result.Any())
+                return NotFound();
+
+            return Ok(result);
+        }
         
         [HttpPost]
         public IActionResult PostPeople(People people)

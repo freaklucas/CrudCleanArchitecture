@@ -77,6 +77,34 @@ namespace CrudQualidade.Tests
             //Asset -> esperado
             mockRepo.Verify(repo => repo.DeletePeople(mockPeople), Times.Once());
         }
+
+        [Fact]
+        public void GetPeopleByFilters_ShouldReturnFilteredPeoples()
+        {
+            var mockPepo = new Mock<IPeopleRepository>();
+            mockPepo.Setup(repo => repo.GetPeopleByFilters("Rio Verde", 20, 80))
+                .Returns(GetTestFilteredPeoples());
+
+            var mockUow = new Mock<IUnitOfWork>();
+            mockUow.Setup(uow => uow.PeopleRepository).Returns(mockPepo.Object);
+
+            var service = new PeopleService(mockUow.Object);
+            var result = service.GetPeopleByFilters("Rio Verde", 20, 80);
+            
+            Assert.Collection(result,
+                people => Assert.Equal("Lucas", people.Name),
+                people => Assert.Equal("Márcia", people.Name)
+                );
+        }
+
+        private List<People> GetTestFilteredPeoples()
+        {
+            return new List<People>
+            {
+                new People {Id = 1, Name="Lucas", Age = 20},
+                new People {Id = 2, Name="Márcia", Age = 60}
+            };
+        }
         private List<People> GetTestPeoples()
         {
             return new List<People>

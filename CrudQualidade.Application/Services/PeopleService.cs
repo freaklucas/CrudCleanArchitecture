@@ -40,4 +40,9 @@ public class PeopleService : IPeopleService
     {
         _unitOfWork.PeopleRepository.DeletePeople(people);
     }
+
+    public IEnumerable<People> GetPeopleByFilters(string city, int? ageMin, int? ageMax)
+    {
+        return _unitOfWork.PeopleRepository.GetPeopleByFilters(city, ageMin, ageMax);
+    }
 }
