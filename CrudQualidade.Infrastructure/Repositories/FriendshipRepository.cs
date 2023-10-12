@@ -28,15 +28,15 @@ namespace CrudQualidade.Infrastructure.Repository
             _context.SaveChanges();
         }
 
-        public void RemoveFriendship(int personId1, int personId2)
+        public void RemoveAllRelationFriend(int personId)
         {
             var existingFriendship = _context.Friendships
-                .FirstOrDefault(f => (f.PersonId1 == personId1 && f.PersonId2 == personId2) || 
-                                     (f.PersonId1 == personId2 && f.PersonId2 == personId1));
+                .Where(f => f.PersonId1 == personId || f.PersonId2 == personId)
+                .ToList();
 
             if (existingFriendship != null)
             {
-                _context.Remove(existingFriendship);
+                _context.RemoveRange(existingFriendship);
                 _context.SaveChanges();
             }
         }

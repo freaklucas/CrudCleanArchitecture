@@ -19,9 +19,9 @@ namespace CrudQualidade.Application.Services
             _friendshipRepository.AddFriendship(personId1, personId2);
         }
 
-        public void RemoveFriendship(int personId1, int personId2)
+        public void RemoveAllRelationFriend(int personId)
         {
-            _friendshipRepository.RemoveFriendship(personId1, personId2);
+            _friendshipRepository.RemoveAllRelationFriend(personId);
         }
 
         public IEnumerable<People> GetFriendsOfPeople(int personId)

@@ -31,6 +31,21 @@ namespace CrudQualidade.API.Controllers
 
             return Ok(friends);
         }
+
+        [HttpDelete("remove")]
+        public IActionResult RemoveAllRelationFriend([FromQuery] int personId)
+        {
+            try
+            {
+                _friendshipService.RemoveAllRelationFriend(personId);
+
+                return Ok($"Relações de amizade deletadas do id: {personId}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro ao remover amizades : {ex.Message}");
+            }
+        }
     }
     
 }
