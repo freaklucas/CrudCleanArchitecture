@@ -2,6 +2,7 @@
 using CrudQualidade.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrudQualidade.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231012214108_friendship")]
+    partial class friendship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
@@ -29,13 +32,6 @@ namespace CrudQualidade.Infrastructure.Migrations
                     b.HasIndex("PersonId2");
 
                     b.ToTable("Friendships");
-
-                    b.HasData(
-                        new
-                        {
-                            PersonId1 = 1,
-                            PersonId2 = 2
-                        });
                 });
 
             modelBuilder.Entity("CrudQualidade.Domain.Entities.People", b =>

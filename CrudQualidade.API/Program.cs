@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using CrudQualidade.Infrastructure.Data.Configuration;
 using CrudQualidade.Infrastructure.Data;
 using CrudQualidade.Application.Interfaces;
+using CrudQualidade.Application.Services;
 using CrudQualidade.Domain.Interfaces;
 using CrudQualidade.Infrastructure.Repository;
 
@@ -12,8 +13,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.ConfigureServices(builder.Configuration);
 builder.Services.AddScoped<IPeopleService, PeopleService>();
+builder.Services.AddScoped<IFriendshipService, FriendshipService>();
+builder.Services.AddScoped<IFriendshipRepository, FriendshipRepository>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>

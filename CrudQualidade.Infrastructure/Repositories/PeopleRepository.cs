@@ -5,7 +5,6 @@ using System.Linq;
 using CrudQualidade.Application.DTOs;
 using CrudQualidade.Infrastructure.Repository.Generic;
 
-
 namespace CrudQualidade.Infrastructure.Repository
 {
     public class PeopleRepository : Repository<People>, IPeopleRepository

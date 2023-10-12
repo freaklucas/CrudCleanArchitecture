@@ -2,33 +2,42 @@ using CrudQualidade.Application.Interfaces;
 using CrudQualidade.Domain.Interfaces;
 using CrudQualidade.Infrastructure.Data;
 
-namespace CrudQualidade.Infrastructure.Repository;
-
-public class UnitOfWork : IUnitOfWork
+namespace CrudQualidade.Infrastructure.Repository
 {
-    private readonly AppDbContext _context;
-    private PeopleRepository _peopleRepository;
-
-    public UnitOfWork(AppDbContext context)
+    public class UnitOfWork : IUnitOfWork
     {
-        _context = context;
-    }
+        private readonly AppDbContext _context;
+        private PeopleRepository _peopleRepository;
+        private FriendshipRepository _friendshipRepository;
 
-    public IPeopleRepository PeopleRepository
-    {
-        get
+        public UnitOfWork(AppDbContext context)
         {
-            return _peopleRepository ??= new PeopleRepository(_context);
+            _context = context;
         }
-    }
 
-    public void Commit()
-    {
-        _context.SaveChanges();
-    }
+        public IPeopleRepository PeopleRepository
+        {
+            get
+            {
+                return _peopleRepository ??= new PeopleRepository(_context);
+            }
+        }
+        public IFriendshipRepository FriendshipRepository 
+        {
+            get
+            {
+                return _friendshipRepository ??= new FriendshipRepository(_context);
+            }
+        }
 
-    public void Dispose()
-    {
-        _context.Dispose();
+        public void Commit()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
     }
 }
