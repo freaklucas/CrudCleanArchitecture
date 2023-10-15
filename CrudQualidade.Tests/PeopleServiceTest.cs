@@ -18,11 +18,11 @@ namespace CrudQualidade.Tests
                 .Returns(GetTestPeoples());
             var mockUow = new Mock<IUnitOfWork>();
             mockUow.Setup(uow => uow.PeopleRepository).Returns(mockRepo.Object);
-            
+
             var service = new PeopleService(mockUow.Object);
             var result = service.GetAllPeoples();
 
-            Assert.Collection(result, 
+            Assert.Collection(result,
                 people => Assert.Equal("Lucas", people.Name),
                 people => Assert.Equal("Márcia", people.Name));
         }
@@ -31,7 +31,7 @@ namespace CrudQualidade.Tests
         public void GetPeoples_ShouldReturnPeopleById()
         {
             var expectedPeopleId = 1;
-            var expectedPeople = new People { Id=expectedPeopleId, Name="Lucas" };
+            var expectedPeople = new People { Id = expectedPeopleId, Name = "Lucas" };
             var mockRepo = new Mock<IPeopleRepository>();
             mockRepo.Setup(repo => repo.GetPeopleById(expectedPeopleId)).Returns(expectedPeople);
 
@@ -40,11 +40,30 @@ namespace CrudQualidade.Tests
 
             var service = new PeopleService(mockUow.Object);
             var result = service.GetPeopleById(expectedPeopleId);
-            
+
             Assert.Equal(expectedPeople.Name, result.Name);
         }
 
         [Fact]
+        public void PostPeoples_ShouldReturnSendPost()
+        {
+            // Arrange
+            var newPeople = new People { Id = 1, Name =  "Lucas"};
+            var mockRepo = new Mock<IPeopleRepository>();
+            mockRepo.Setup(repo => repo.Insert(newPeople));
+
+            var mockUow = new Mock<IUnitOfWork>();
+            mockUow.Setup(uow => uow.PeopleRepository).Returns(mockRepo.Object);
+            var service = new PeopleService(mockUow.Object);
+            
+            // Act
+            service.InsertPeople(newPeople);
+            
+            // Assert
+            mockRepo.Verify(repo => repo.Insert(newPeople), Times.Once());
+        }
+
+    [Fact]
         public void UpdatePeople_ShouldUpdatePeople()
         {
             var mockPeople = new People { Id = 1, Name = "Lucas Editado" };
@@ -96,7 +115,6 @@ namespace CrudQualidade.Tests
                 people => Assert.Equal("Márcia", people.Name)
                 );
         }
-
         private List<People> GetTestFilteredPeoples()
         {
             return new List<People>

@@ -2,7 +2,12 @@
 {
     public class People
     {
-        public People() {}
+        public People()
+        {
+            FriendshipsInitialized = new List<Friendship>();
+            FriendshipsAccepted = new List<Friendship>();
+            Post = new List<Post>();
+        }
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? LastName { get; set; }
