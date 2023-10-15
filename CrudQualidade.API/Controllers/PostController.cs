@@ -35,21 +35,49 @@ namespace CrudQualidade.API.Controllers
         [HttpPost]
         public IActionResult PostElement(Post post)
         {
+            if (post == null) return BadRequest("Dados inválidos!");
+        
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+        
+            _postService.InsertPost(post);
+
+            return CreatedAtAction(nameof(GetPostById), new { id = post.Id }, post);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult PutPost(int id, [FromBody] Post post)
+        {
+            if (post.Id != id) return BadRequest("Id na requisição é diferente do id da url!");
+            var existsPost = _postService.GetPostById(id);
+            
+            if (existsPost == null) return BadRequest("Post não existe!");
+
             try
             {
-                if (post == null) return BadRequest("Dados inválidos!");
-            
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-            
-                _postService.InsertPost(post);
-
-                return CreatedAtAction(nameof(GetPostById), new { id = post.Id }, post);
+                _postService.UpdatePost(post);
+                return Ok(post);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e);
-                throw;
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("id")]
+        public IActionResult DeletePost(int id)
+        {
+            var existsPost = _postService.GetPostById(id);
+            if (existsPost == null) return BadRequest("Post não encontrado!");
+
+            try
+            {
+                _postService.DeletePost(existsPost);
+                return Ok("Post removido!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
