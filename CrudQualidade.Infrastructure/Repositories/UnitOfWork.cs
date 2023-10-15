@@ -9,6 +9,7 @@ namespace CrudQualidade.Infrastructure.Repository
         private readonly AppDbContext _context;
         private PeopleRepository _peopleRepository;
         private FriendshipRepository _friendshipRepository;
+        private PostRepository _postRepository;
 
         public UnitOfWork(AppDbContext context)
         {
@@ -27,6 +28,14 @@ namespace CrudQualidade.Infrastructure.Repository
             get
             {
                 return _friendshipRepository ??= new FriendshipRepository(_context);
+            }
+        }
+
+        public IPostRepository PostRepository
+        {
+            get
+            {
+                return _postRepository ??= new PostRepository(_context);
             }
         }
 

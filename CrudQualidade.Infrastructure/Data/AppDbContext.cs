@@ -10,6 +10,8 @@ namespace CrudQualidade.Infrastructure.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<People> Peoples { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
+        
+        public DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,7 +26,6 @@ namespace CrudQualidade.Infrastructure.Data
             modelBuilder.Entity<Friendship>().HasData(
                 new Friendship { PersonId1 = 1, PersonId2 = 2 }
             );
-
             
             modelBuilder.Entity<Friendship>()
                 .HasOne(f => f.People1)
@@ -37,8 +38,14 @@ namespace CrudQualidade.Infrastructure.Data
                 .WithMany(p => p.FriendshipsAccepted)
                 .HasForeignKey(c => c.PersonId2)
                 .OnDelete(DeleteBehavior.Restrict);
-            //modelBuilder.Entity<People>()
-            //         .HasKey(p => new {p.Id });
+            
+            modelBuilder.Entity<People>()
+                     .HasKey(p => new {p.Id });
+
+            modelBuilder.Entity<Post>().HasData(
+                new Post { Id = 1, PeopleId = 1, Content = "Primeira postagem de Lucas :)", DatePost = DateTime.Now},
+                new Post { Id = 2, PeopleId = 2, Content = "Márcia disse que Deus está vivo <3", DatePost = DateTime.Now}
+            );
         }
     }
 }

@@ -6,5 +6,6 @@ public interface IUnitOfWork : IDisposable
 {
     IPeopleRepository PeopleRepository { get; }
     IFriendshipRepository FriendshipRepository { get; }
+    IPostRepository PostRepository { get; }
     void Commit();
 }

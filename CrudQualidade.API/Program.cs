@@ -18,6 +18,9 @@ builder.Services.ConfigureServices(builder.Configuration);
 builder.Services.AddScoped<IPeopleService, PeopleService>();
 builder.Services.AddScoped<IFriendshipService, FriendshipService>();
 builder.Services.AddScoped<IFriendshipRepository, FriendshipRepository>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

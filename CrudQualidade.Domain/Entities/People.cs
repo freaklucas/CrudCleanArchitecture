@@ -13,5 +13,6 @@
         
         public List<Friendship> FriendshipsInitialized { get; set; }
         public List<Friendship> FriendshipsAccepted { get; set; }
+        public List<Post> Post { get; set; }
     }
 }
