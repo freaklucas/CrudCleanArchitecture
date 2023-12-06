@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudQualidade.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudQualidade.API", "CrudQualidade.API\CrudQualidade.API.csproj", "{6403AC1B-E19C-40CA-A6DD-271E3E6FE148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudQualidade.Tests", "CrudQualidade.Tests\CrudQualidade.Tests.csproj", "{D5D02470-A1B3-40C3-9847-974F19C975D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudQualidade.Tests", "CrudQualidade.Tests\CrudQualidade.Tests.csproj", "{D5D02470-A1B3-40C3-9847-974F19C975D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{27E32BF0-4530-4819-AEB6-000C36561648}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
